@@ -31,7 +31,7 @@ Route::get('/clients', function () {
 });
 
 Route::get('/capteurs-inactifs', function () {
-    return view('capteursInactifs');
+    return view('capteurs-inactifs');
 
 });
 

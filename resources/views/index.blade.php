@@ -253,10 +253,8 @@
             </div>
             <!-- HEADER DESKTOP-->
             <header class="header-desktop">
-                
                     <div class="section__content section__content--p30">
                         <div class="container-fluid">
-                     
                         <div class="header-wrap">
                             <form class="form-header" action="" method="POST">
                                 <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
@@ -440,7 +438,7 @@
                             </div>
                         </div>
                         <div class="row m-t-25 ">
-                            <a href=""><div class="col-sm-6 col-lg-3">
+                            <a href="{{ url('/mesures') }}"><div class="col-sm-6 col-lg-3">
                                 <div class="overview-item overview-item--c1">
                                     <div class="overview__inner">
                                         <div class="overview-box clearfix">
@@ -458,7 +456,7 @@
                                     </div>
                                 </div></a>
                             </div>
-                            <a href=""><div class="col-sm-6 col-lg-3">
+                            <a href="{{ url('/clients') }}"><div class="col-sm-6 col-lg-3">
                                 <div class="overview-item overview-item--c2">
                                     <div class="overview__inner">
                                         <div class="overview-box clearfix">
@@ -476,7 +474,7 @@
                                     </div>
                                 </div></a>
                             </div>
-                            <a href=""><div class="col-sm-6 col-lg-3">
+                            <a href="{{ url('/capteurs-inactifs') }}"><div class="col-sm-6 col-lg-3">
                                 <div class="overview-item overview-item--c3">
                                     <div class="overview__inner">
                                         <div class="overview-box clearfix">
@@ -494,7 +492,7 @@
                                     </div>
                                 </div></a>
                             </div>
-                            <a href=""><div class="col-sm-6 col-lg-3">
+                            <a href="{{ url('/capteurs') }}"><div class="col-sm-6 col-lg-3">
                                 <div class="overview-item overview-item--c4">
                                     <div class="overview__inner">
                                         <div class="overview-box clearfix">
