@@ -20,6 +20,22 @@ Route::get('/home', function () {
     return view('index');
 });
 
-Route::get('/chart', function () {
-    return view('chart');
+Route::get('/mesures', function () {
+    return view('mesures');
+
+});
+
+Route::get('/clients', function () {
+        return view('clients');
+
+});
+
+Route::get('/capteurs-inactifs', function () {
+    return view('capteursInactifs');
+
+});
+
+Route::get('/capteurs', function () {
+    return view('capteurs');
+
 });

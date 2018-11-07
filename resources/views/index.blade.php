@@ -4,7 +4,7 @@
 <head>
     <!-- Required meta tags-->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1,>
     <meta name="description" content="au theme template">
     <meta name="author" content="Hau Nguyen">
     <meta name="keywords" content="au theme template">
@@ -42,7 +42,7 @@
             <div class="header-mobile__bar">
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
-                        <a class="logo" href="index.blade.php">
+                        <a class="logo" href="{{ url('/index') }}">
                             <img src="images/icon/logo_heyliot.png" alt="Heyliot" />
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
@@ -53,6 +53,7 @@
                     </div>
                 </div>
             </div>
+            <!--
             <nav class="navbar-mobile">
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
@@ -61,21 +62,12 @@
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                             <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
                                 <li>
-                                    <a href="index.blade.php">Dashboard 1</a>
-                                </li>
-                                <li>
-                                    <a href="index2.blade.php">Dashboard 2</a>
-                                </li>
-                                <li>
-                                    <a href="index3.blade.php">Dashboard 3</a>
-                                </li>
-                                <li>
-                                    <a href="index4.blade.php">Dashboard 4</a>
+                                    <a href="{{ url('/index') }}">Dashboard 1</a>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <a href="chart.blade.php">
+                            <a href="{{ url('/chart') }}">
                                 <i class="fas fa-chart-bar"></i>Charts</a>
                         </li>
                         <li>
@@ -150,17 +142,14 @@
                         </li>
                     </ul>
                 </div>
-            </nav>
+            </nav> -->
         </header>
         <!-- END HEADER MOBILE-->
 
         <!-- MENU SIDEBAR-->
         <aside class="menu-sidebar d-none d-lg-block">
-            <div class="logo">
-                <a href="#">
-                    <img src="images/icon/logo.png" alt="Cool Admin" />
-                </a>
-            </div>
+           
+            <!--
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
@@ -169,34 +158,25 @@
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li>
-                                    <a href="index.blade.php">Dashboard 1</a>
-                                </li>
-                                <li>
-                                    <a href="index2.blade.php">Dashboard 2</a>
-                                </li>
-                                <li>
-                                    <a href="index3.blade.php">Dashboard 3</a>
-                                </li>
-                                <li>
-                                    <a href="index4.blade.php">Dashboard 4</a>
+                                    <a href="{{ url('/home') }}">Dashboard </a>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <a href="chart.blade.php">
-                                <i class="fas fa-chart-bar"></i>Charts</a>
+                            <a href="{{ url('/mesures') }}">
+                                <i class="fas fa-chart-bar"></i>Mesures</a>
                         </li>
                         <li>
-                            <a href="table.blade.php">
-                                <i class="fas fa-table"></i>Tables</a>
+                            <a href="{{ url('/clients') }}">
+                                <i class="fas fa-table"></i>Clients</a>
                         </li>
                         <li>
-                            <a href="form.blade.php">
-                                <i class="far fa-check-square"></i>Forms</a>
+                            <a href="{{ url('/capteurs-inactifs') }}">
+                                <i class="far fa-check-square"></i>Capteurs inactifs</a>
                         </li>
                         <li>
-                            <a href="#">
-                                <i class="fas fa-calendar-alt"></i>Calendar</a>
+                            <a href="{{ url('/capteurs') }}">
+                                <i class="fas fa-calendar-alt"></i>Capteurs</a>
                         </li>
                         <li>
                             <a href="map.blade.php">
@@ -259,15 +239,24 @@
                     </ul>
                 </nav>
             </div>
-        </aside>
+            -->
+        </aside> 
         <!-- END MENU SIDEBAR-->
 
         <!-- PAGE CONTAINER-->
         <div class="page-container">
+            
+            <div class="logo1">
+                    <a href="#">
+                        <img src="images/icon/logo_heyliot.png" alt="Heyliot" />
+                    </a>
+            </div>
             <!-- HEADER DESKTOP-->
             <header class="header-desktop">
-                <div class="section__content section__content--p30">
-                    <div class="container-fluid">
+                
+                    <div class="section__content section__content--p30">
+                        <div class="container-fluid">
+                     
                         <div class="header-wrap">
                             <form class="form-header" action="" method="POST">
                                 <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
@@ -275,7 +264,7 @@
                                     <i class="zmdi zmdi-search"></i>
                                 </button>
                             </form>
-                            <div class="header-button">
+                            <!--<div class="header-button">
                                 <div class="noti-wrap">
                                     <div class="noti__item js-item-menu">
                                         <i class="zmdi zmdi-comment-more"></i>
@@ -431,7 +420,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -442,89 +431,89 @@
             <div class="main-content">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
-                        <div class="row">
+                        <div class="row m-t-25">
                             <div class="col-md-12">
                                 <div class="overview-wrap">
                                     <h2 class="title-1">overview</h2>
-                                    <button class="au-btn au-btn-icon au-btn--blue">
-                                        <i class="zmdi zmdi-plus"></i>add item</button>
+                                    
                                 </div>
                             </div>
                         </div>
-                        <div class="row m-t-25">
-                            <div class="col-sm-6 col-lg-3">
+                        <div class="row m-t-25 ">
+                            <a href=""><div class="col-sm-6 col-lg-3">
                                 <div class="overview-item overview-item--c1">
                                     <div class="overview__inner">
                                         <div class="overview-box clearfix">
                                             <div class="icon">
-                                                <i class="zmdi zmdi-account-o"></i>
+                                                <i class="zmdi zmdi-chart"></i>
                                             </div>
                                             <div class="text">
-                                                <h2>10368</h2>
-                                                <span>members online</span>
+                                                <h2>100 000</h2>
+                                                <span>mesures</span>
                                             </div>
                                         </div>
                                         <div class="overview-chart">
                                             <canvas id="widgetChart1"></canvas>
                                         </div>
                                     </div>
-                                </div>
+                                </div></a>
                             </div>
-                            <div class="col-sm-6 col-lg-3">
+                            <a href=""><div class="col-sm-6 col-lg-3">
                                 <div class="overview-item overview-item--c2">
                                     <div class="overview__inner">
                                         <div class="overview-box clearfix">
                                             <div class="icon">
-                                                <i class="zmdi zmdi-shopping-cart"></i>
+                                                <i class="zmdi zmdi-account-o"></i>
                                             </div>
                                             <div class="text">
-                                                <h2>388,688</h2>
-                                                <span>items solid</span>
+                                                <h2>300 </h2>
+                                                <span>clients</span>
                                             </div>
                                         </div>
                                         <div class="overview-chart">
                                             <canvas id="widgetChart2"></canvas>
                                         </div>
                                     </div>
-                                </div>
+                                </div></a>
                             </div>
-                            <div class="col-sm-6 col-lg-3">
+                            <a href=""><div class="col-sm-6 col-lg-3">
                                 <div class="overview-item overview-item--c3">
                                     <div class="overview__inner">
                                         <div class="overview-box clearfix">
                                             <div class="icon">
-                                                <i class="zmdi zmdi-calendar-note"></i>
+                                                <i class="zmdi zmdi-devices-off"></i>
                                             </div>
                                             <div class="text">
-                                                <h2>1,086</h2>
-                                                <span>this week</span>
+                                                <h2>20</h2>
+                                                <span>Capteurs inactifs</span>
                                             </div>
                                         </div>
                                         <div class="overview-chart">
                                             <canvas id="widgetChart3"></canvas>
                                         </div>
                                     </div>
-                                </div>
+                                </div></a>
                             </div>
-                            <div class="col-sm-6 col-lg-3">
+                            <a href=""><div class="col-sm-6 col-lg-3">
                                 <div class="overview-item overview-item--c4">
                                     <div class="overview__inner">
                                         <div class="overview-box clearfix">
                                             <div class="icon">
-                                                <i class="zmdi zmdi-money"></i>
+                                                <i class="zmdi zmdi-device-hub"></i>
                                             </div>
                                             <div class="text">
-                                                <h2>$1,060,386</h2>
-                                                <span>total earnings</span>
+                                                <h2>1000</h2>
+                                                <span> Capteurs</span>
                                             </div>
                                         </div>
                                         <div class="overview-chart">
                                             <canvas id="widgetChart4"></canvas>
                                         </div>
                                     </div>
-                                </div>
+                                </div></a>
                             </div>
                         </div>
+                        <!--
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="au-card recent-report">
@@ -968,8 +957,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
+                        </div> -->
+                        <!--<div class="row">
                             <div class="col-md-12">
                                 <div class="copyright">
                                     <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
