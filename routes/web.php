@@ -16,14 +16,8 @@ Route::get('/', function () {
 });
 
 
-Route::get('/home', function () {
-    return view('index');
-});
+Route::get('/home', 'HomeController@count');
 
-Route::get('/mesures', function () {
-    return view('mesures');
-
-});
 
 Route::get('/clients', function () {
         return view('clients');

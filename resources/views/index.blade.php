@@ -438,16 +438,22 @@
                             </div>
                         </div>
                         <div class="row m-t-25 ">
-                            <a href="{{ url('/mesures') }}"><div class="col-sm-6 col-lg-3">
+                            <a href="{{ url('payload/payload-count') }}"><div class="col-sm-6 col-lg-3">
                                 <div class="overview-item overview-item--c1">
                                     <div class="overview__inner">
                                         <div class="overview-box clearfix">
                                             <div class="icon">
                                                 <i class="zmdi zmdi-chart"></i>
                                             </div>
-                                            <div class="text">
-                                                <h2>100 000</h2>
-                                                <span>mesures</span>
+                                            <div class="text">  
+                                                @if( $total_payloads > 99000)
+                                                <h2>{{ number_format(($total_payloads /1000), 1) }}K</h2>
+                                                @elseif( $total_payloads > 999999)
+                                                <h2>{{ number_format(($total_payloads / 1000000), 1) }}M</h2>
+                                                @else
+                                                <h2>{{ $total_payloads }}</h2>
+                                                @endif
+                                                <span>  Mesures</span>
                                             </div>
                                         </div>
                                         <div class="overview-chart">
@@ -464,7 +470,7 @@
                                                 <i class="zmdi zmdi-account-o"></i>
                                             </div>
                                             <div class="text">
-                                                <h2>300 </h2>
+                                                <h2> {{ $total_clients }} </h2>
                                                 <span>clients</span>
                                             </div>
                                         </div>
@@ -492,7 +498,7 @@
                                     </div>
                                 </div></a>
                             </div>
-                            <a href="{{ url('/capteurs') }}"><div class="col-sm-6 col-lg-3">
+                            <a href="{{ url('/home') }}"><div class="col-sm-6 col-lg-3">
                                 <div class="overview-item overview-item--c4">
                                     <div class="overview__inner">
                                         <div class="overview-box clearfix">
@@ -500,7 +506,7 @@
                                                 <i class="zmdi zmdi-device-hub"></i>
                                             </div>
                                             <div class="text">
-                                                <h2>1000</h2>
+                                                <h2> {{ $total_device }} </h2>
                                                 <span> Capteurs</span>
                                             </div>
                                         </div>
