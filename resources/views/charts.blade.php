@@ -33,6 +33,9 @@
     <!-- Main CSS-->
     <link href="css/theme.css" rel="stylesheet" media="all">
 
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 </head>
 
 <body class="animsition">
@@ -43,7 +46,7 @@
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
                         <a class="logo" href="index.blade.php">
-                            <img src="images/icon/logo.png" alt="CoolAdmin" />
+                            <img src="images/icon/logo_heyliot.png" alt="Heyliot" />
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
                             <span class="hamburger-box">
@@ -53,7 +56,8 @@
                     </div>
                 </div>
             </div>
-            <nav class="navbar-mobile">
+            test
+            <!--<nav class="navbar-mobile">
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
                         <li class="has-sub">
@@ -150,12 +154,12 @@
                         </li>
                     </ul>
                 </div>
-            </nav>
-        </header>
-        <!-- END HEADER MOBILE-->
+            </nav>-->
+        </header> 
+        <!-- END HEADER MOBILE
 
         <!-- MENU SIDEBAR-->
-        <aside class="menu-sidebar d-none d-lg-block">
+        <!--<aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
                 <a href="#">
                     <img src="images/icon/logo.png" alt="Cool Admin" />
@@ -259,11 +263,16 @@
                     </ul>
                 </nav>
             </div>
-        </aside>
+        </aside>-->
         <!-- END MENU SIDEBAR-->
-
+        
         <!-- PAGE CONTAINER-->
         <div class="page-container">
+            <div class="logo1">
+                    <a href="#">
+                        <img src="images/icon/logo_heyliot.png" alt="Heyliot" />
+                    </a>
+            </div>
             <!-- HEADER DESKTOP-->
             <header class="header-desktop">
                 <div class="section__content section__content--p30">
@@ -275,7 +284,7 @@
                                     <i class="zmdi zmdi-search"></i>
                                 </button>
                             </form>
-                            <div class="header-button">
+                            <!--<div class="header-button">
                                 <div class="noti-wrap">
                                     <div class="noti__item js-item-menu">
                                         <i class="zmdi zmdi-comment-more"></i>
@@ -431,7 +440,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div>-->
                         </div>
                     </div>
                 </div>
@@ -439,93 +448,45 @@
             <!-- END HEADER DESKTOP-->
 
             <!-- MAIN CONTENT-->
-            <div class="main-content">
-                <div class="section__content section__content--p30">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="au-card m-b-30">
-                                    <div class="au-card-inner">
-                                        <h3 class="title-2 m-b-40">Yearly Sales</h3>
-                                        <canvas id="sales-chart"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="au-card m-b-30">
-                                    <div class="au-card-inner">
-                                        <h3 class="title-2 m-b-40">Team Commits</h3>
-                                        <canvas id="team-chart"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="au-card m-b-30">
-                                    <div class="au-card-inner">
-                                        <h3 class="title-2 m-b-40">Bar chart</h3>
-                                        <canvas id="barChart"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="au-card m-b-30">
-                                    <div class="au-card-inner">
-                                        <h3 class="title-2 m-b-40">Rader chart</h3>
-                                        <canvas id="radarChart"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="au-card m-b-30">
-                                    <div class="au-card-inner">
-                                        <h3 class="title-2 m-b-40">Line Chart</h3>
-                                        <canvas id="lineChart"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="au-card m-b-30">
-                                    <div class="au-card-inner">
-                                        <h3 class="title-2 m-b-40">Doughut Chart</h3>
-                                        <canvas id="doughutChart"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="au-card m-b-30">
-                                    <div class="au-card-inner">
-                                        <h3 class="title-2 m-b-40">Pie Chart</h3>
-                                        <canvas id="pieChart"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="au-card m-b-30">
-                                    <div class="au-card-inner">
-                                        <h3 class="title-2 m-b-40">Polar Chart</h3>
-                                        <canvas id="polarChart"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="au-card m-b-30">
-                                    <div class="au-card-inner">
-                                        <h3 class="title-2 m-b-40">Single Bar Chart</h3>
-                                        <canvas id="singelBarChart"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="copyright">
-                                    <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+           
+            <form method="post" action="{{ url('/mesures') }}">
+                <div class="row">
+                    <label> {{ __('graphiques.start') }}</label>
+                    <input type="date" value="{{ date("Y-m-d") }}" name="start" min="2018-01-01" max="2018-12-31" >
+                    <label> {{ __('graphiques.end') }}</label>
+                    <input type="date" value="{{ date("Y-m-d") }}" name="end" min="2018-01-01" max="2018-12-31" >
+                    <button type="submit"></button>
                 </div>
-            </div>
+            </form>
+            <div id="container" style="width:100%; height:900px;max-width:80%; margin:auto"></div>
+            <script>
+                $(function () { 
+                    var myChart = Highcharts.chart("container", {
+                        chart: {
+                            type: 'area'
+                        },
+                        title: {
+                            text: '{{ __('graphiques.title') }}',
+                        },
+                        xAxis: {
+                            title: {
+                                text: '{{ __('graphiques.graphx') }}',
+                            }
+                        },
+                        yAxis: {
+                            title: {
+                                text: '{{ __('graphiques.graphy') }}',
+                            }
+                            
+                        },
+                        series: [{
+                            name: 'Nombre de mesures',
+                            data: [{{ $total_payloads }}]
+                        }]
+                    });
+                }); 
+            </script>
+
             <!-- END MAIN CONTENT-->
         </div>
         <!-- END PAGE CONTAINER-->

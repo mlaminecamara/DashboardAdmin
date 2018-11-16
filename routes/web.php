@@ -19,17 +19,9 @@ Route::get('/', function () {
 Route::get('/home', 'HomeController@count');
 
 
-Route::get('/clients', function () {
-        return view('clients');
+Route::get('/capteurs-inactifs', 'capteursInactifsController@detail');
 
-});
+//Route::get('/mesures', 'capteursInactifsController@detail');
 
-Route::get('/capteurs-inactifs', function () {
-    return view('capteurs-inactifs');
 
-});
-
-Route::get('/capteurs', function () {
-    return view('capteurs');
-
-});
+Route::get('/mesures', 'PayloadChartController@count');

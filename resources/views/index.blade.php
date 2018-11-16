@@ -433,12 +433,11 @@
                             <div class="col-md-12">
                                 <div class="overview-wrap">
                                     <h2 class="title-1">overview</h2>
-                                    
                                 </div>
                             </div>
                         </div>
                         <div class="row m-t-25 ">
-                            <a href="{{ url('payload/payload-count') }}"><div class="col-sm-6 col-lg-3">
+                            <a href="{{ url('/mesures') }}"><div class="col-sm-6 col-lg-3">
                                 <div class="overview-item overview-item--c1">
                                     <div class="overview__inner">
                                         <div class="overview-box clearfix">
@@ -462,7 +461,7 @@
                                     </div>
                                 </div></a>
                             </div>
-                            <a href="{{ url('/clients') }}"><div class="col-sm-6 col-lg-3">
+                            <a href="{{ url('/home') }}"><div class="col-sm-6 col-lg-3">
                                 <div class="overview-item overview-item--c2">
                                     <div class="overview__inner">
                                         <div class="overview-box clearfix">
@@ -488,7 +487,7 @@
                                                 <i class="zmdi zmdi-devices-off"></i>
                                             </div>
                                             <div class="text">
-                                                <h2>20</h2>
+                                                <h2> {{ $total_capteurs_inactifs }}</h2>
                                                 <span>Capteurs inactifs</span>
                                             </div>
                                         </div>
@@ -998,6 +997,7 @@
     <script src="vendor/chartjs/Chart.bundle.min.js"></script>
     <script src="vendor/select2/select2.min.js">
     </script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
 
     <!-- Main JS-->
     <script src="js/main.js"></script>

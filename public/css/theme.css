@@ -4211,7 +4211,7 @@ section {
 
 /* ----- Table ----- */
 .table {
-    margin: 0;
+    margin: auto;
 }
 
 .table-responsive.table--no-card {
