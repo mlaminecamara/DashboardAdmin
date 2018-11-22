@@ -11,11 +11,11 @@
       var myChart = new Chart(ctx, {
         type: 'line',
         data: {
-          labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+          labels: field_dates,
           type: 'line',
           datasets: [{
-            data: [78, 81, 80, 45, 34, 12, 40],
-            label: 'Dataset',
+            data: field_val,
+            label: 'Mesures',
             backgroundColor: 'rgba(255,255,255,.1)',
             borderColor: 'rgba(255,255,255,.55)',
           },]
@@ -77,11 +77,11 @@
       var myChart = new Chart(ctx, {
         type: 'line',
         data: {
-          labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+          labels: field_dates_clients,
           type: 'line',
           datasets: [{
-            data: [1, 18, 9, 17, 34, 22],
-            label: 'Dataset',
+            data: field_val_clients,
+            label: 'Clients',
             backgroundColor: 'transparent',
             borderColor: 'rgba(255,255,255,.55)',
           },]
@@ -144,15 +144,15 @@
     //WidgetChart 3
     var ctx = document.getElementById("widgetChart3");
     if (ctx) {
-      ctx.height = 130;
+      ctx.height = 115;
       var myChart = new Chart(ctx, {
         type: 'line',
         data: {
-          labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+          labels: field_dates_capteurs_inactifs,
           type: 'line',
           datasets: [{
-            data: [65, 59, 84, 84, 51, 55],
-            label: 'Dataset',
+            data: field_val_capteurs_inactifs,
+            label: 'Capteurs inactifs',
             backgroundColor: 'transparent',
             borderColor: 'rgba(255,255,255,.55)',
           },]
@@ -218,11 +218,11 @@
       var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-          labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+          labels: field_dates_capteurs,
           datasets: [
             {
-              label: "My First dataset",
-              data: [78, 81, 80, 65, 58, 75, 60, 75, 65, 60, 60, 75],
+              label: "Capteurs",
+              data: field_val_capteurs,
               borderColor: "transparent",
               borderWidth: "0",
               backgroundColor: "rgba(255,255,255,.3)"
@@ -238,7 +238,7 @@
             xAxes: [{
               display: false,
               categoryPercentage: 1,
-              barPercentage: 0.65
+              barPercentage: 0.70
             }],
             yAxes: [{
               display: false

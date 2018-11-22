@@ -5,5 +5,6 @@ return [
     'graphx' => 'Dates de la mesure',
     'graphy' => 'Nombre de mesures',
     'start'  => 'Date de début',
-    'end'    => 'Date de fin'
+    'end'    => 'Date de fin',
+    'refresh' => 'Rafraîchir',
 ];

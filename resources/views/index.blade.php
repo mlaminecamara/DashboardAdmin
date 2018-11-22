@@ -437,7 +437,7 @@
                             </div>
                         </div>
                         <div class="row m-t-25 ">
-                            <a href="{{ url('/mesures') }}"><div class="col-sm-6 col-lg-3">
+                            <a href="{{ url('/chart') }}"><div class="col-sm-6 col-lg-3">
                                 <div class="overview-item overview-item--c1">
                                     <div class="overview__inner">
                                         <div class="overview-box clearfix">
@@ -469,8 +469,25 @@
                                                 <i class="zmdi zmdi-account-o"></i>
                                             </div>
                                             <div class="text">
-                                                <h2> {{ $total_clients }} </h2>
-                                                <span>clients</span>
+                                            <?php
+                                                function sortFunction($a, $b) {
+                                                    return strtotime($a[1]) - strtotime($b[1]);
+                                                    }
+                                                usort($total_clients, "sortFunction");
+                                                //var_dump($total_clients);
+                                            ?>
+                                                
+                                                <h2>
+                                                @foreach($total_clients as $total)
+                                                    <?php
+                                                    $date_g = date_parse($total[1])
+                                                    ?>
+                                                    @if($loop->last)
+                                                        {{ $total[0] }}
+                                                    @endif
+                                                @endforeach
+                                                </h2>
+                                                <span>Clients</span>
                                             </div>
                                         </div>
                                         <div class="overview-chart">
@@ -479,6 +496,7 @@
                                     </div>
                                 </div></a>
                             </div>
+                            
                             <a href="{{ url('/capteurs-inactifs') }}"><div class="col-sm-6 col-lg-3">
                                 <div class="overview-item overview-item--c3">
                                     <div class="overview__inner">
@@ -487,12 +505,19 @@
                                                 <i class="zmdi zmdi-devices-off"></i>
                                             </div>
                                             <div class="text">
-                                                <h2> {{ $total_capteurs_inactifs }}</h2>
+
+                                                <h2>
+                                                @foreach($total_capteurs_inactifs as $inactifs)
+                                                    @if($loop->last)
+                                                        {{ $inactifs[1] }}
+                                                    @endif
+                                                @endforeach
+                                                </h2>
                                                 <span>Capteurs inactifs</span>
                                             </div>
                                         </div>
                                         <div class="overview-chart">
-                                            <canvas id="widgetChart3"></canvas>
+                                            <canvas id="widgetChart3" ></canvas>
                                         </div>
                                     </div>
                                 </div></a>
@@ -505,12 +530,22 @@
                                                 <i class="zmdi zmdi-device-hub"></i>
                                             </div>
                                             <div class="text">
-                                                <h2> {{ $total_device }} </h2>
+                                            <?php
+                                            usort($total_device, "sortFunction");
+                                            //var_dump($total_device);
+                                            ?>
+                                                <h2> 
+                                                @foreach($total_device as $device)
+                                                    @if($loop->last)
+                                                    {{ $device[0] }}
+                                                    @endif
+                                                @endforeach
+                                                </h2>
                                                 <span> Capteurs</span>
                                             </div>
                                         </div>
                                         <div class="overview-chart">
-                                            <canvas id="widgetChart4"></canvas>
+                                            <canvas id="widgetChart4" ></canvas>
                                         </div>
                                     </div>
                                 </div></a>
@@ -974,8 +1009,84 @@
             <!-- END MAIN CONTENT-->
             <!-- END PAGE CONTAINER-->
         </div>
-
     </div>
+
+<?php
+    usort($total_by_date, "sortFunction");
+    //var_dump($total_by_date);   
+?>
+<script type="text/javascript">
+    // Graph Mesures
+    let field_dates = [];
+    let field_val = [];
+
+    @foreach($total_by_date as $d)
+        <?php
+            $date_g = date_parse($d[1]);
+        ?>
+        field_dates.push("{{ $date_g['day'] }}/{{$date_g['month']}}/{{$date_g['year'] }} ");
+    @endforeach
+    
+    @foreach($total_by_date as $d)
+        field_val.push("{{ $d[0] }}");
+    @endforeach
+    
+    //console.log(field_dates);
+    //console.log(field_val);
+
+    //Grpah clients
+
+    let field_dates_clients = [];
+    let field_val_clients = [];
+
+     @foreach($total_clients as $client)
+        <?php
+            $date_g = date_parse($client[1]);
+        ?>
+        field_dates_clients.push("{{ $date_g['day'] }}/{{$date_g['month']}}/{{$date_g['year'] }} ");
+    @endforeach
+    
+    @foreach($total_clients as $client)
+        field_val_clients.push("{{ $client[0] }}");
+    @endforeach
+
+    //Grpah capteurs inactifs
+
+    let field_dates_capteurs_inactifs = [];
+    let field_val_capteurs_inactifs = [];
+
+     @foreach($total_capteurs_inactifs as $inactifs)
+        <?php
+            $date_g = date_parse($inactifs[0]);
+        ?>
+        field_dates_capteurs_inactifs.push("{{ $date_g['day'] }}/{{$date_g['month']}}/{{$date_g['year'] }} ");
+    @endforeach
+    
+    @foreach($total_capteurs_inactifs as $inactifs)
+        field_val_capteurs_inactifs.push("{{ $inactifs[1] }}");
+    @endforeach
+
+
+
+    //Graph Capteurs totaux
+
+    let field_dates_capteurs = [];
+    let field_val_capteurs = [];
+
+     @foreach($total_device as $device)
+        <?php
+            $date_g = date_parse($device[1]);
+        ?>
+        field_dates_capteurs.push("{{ $date_g['day'] }}/{{$date_g['month']}}/{{$date_g['year'] }} ");
+    @endforeach
+    
+    @foreach($total_device as $device)
+        field_val_capteurs.push("{{ $device[0] }}");
+    @endforeach
+
+   
+</script>
+
 
     <!-- Jquery JS-->
     <script src="vendor/jquery-3.2.1.min.js"></script>

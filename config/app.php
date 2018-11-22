@@ -160,6 +160,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         App\Providers\GraphDataServiceProvider::class,
+        App\Providers\DateServiceProvider::class,
 
         /*
          * Package Service Providers...

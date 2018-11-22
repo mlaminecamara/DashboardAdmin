@@ -24,4 +24,9 @@ Route::get('/capteurs-inactifs', 'capteursInactifsController@detail');
 //Route::get('/mesures', 'capteursInactifsController@detail');
 
 
-Route::get('/mesures', 'PayloadChartController@count');
+Route::post('/chart', function() {
+    return view('charts');
+});
+Route::get('/chart',  function() {
+    return view('charts');
+});

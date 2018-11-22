@@ -448,49 +448,82 @@
             <!-- END HEADER DESKTOP-->
 
             <!-- MAIN CONTENT-->
-           
-            <form method="post" action="{{ url('/mesures') }}">
-                <div class="row">
-                    <label> {{ __('graphiques.start') }}</label>
-                    <input type="date" value="{{ date("Y-m-d") }}" name="start" min="2018-01-01" max="2018-12-31" >
-                    <label> {{ __('graphiques.end') }}</label>
-                    <input type="date" value="{{ date("Y-m-d") }}" name="end" min="2018-01-01" max="2018-12-31" >
-                    <button type="submit"></button>
-                </div>
-            </form>
-            <div id="container" style="width:100%; height:900px;max-width:80%; margin:auto"></div>
-            <script>
-                $(function () { 
-                    var myChart = Highcharts.chart("container", {
-                        chart: {
-                            type: 'area'
-                        },
-                        title: {
-                            text: '{{ __('graphiques.title') }}',
-                        },
-                        xAxis: {
-                            title: {
-                                text: '{{ __('graphiques.graphx') }}',
-                            }
-                        },
-                        yAxis: {
-                            title: {
-                                text: '{{ __('graphiques.graphy') }}',
-                            }
-                            
-                        },
-                        series: [{
-                            name: 'Nombre de mesures',
-                            data: [{{ $total_payloads }}]
-                        }]
-                    });
-                }); 
-            </script>
+           <div class="main-content">
+               <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="card-body">
+                            <form method="post" action="{{ url('/chart') }}">
+                                <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+                                <div class="row">
+                                    <label> {{ __('graphiques.start') }}</label>
+                                    <input type="date"  name="start" @if(isset($start)) value="{{ $start }}" @else value="date("Y-m-d") }}" @endif min="2018-01-01" max="2018-12-31" >
+                                    <label> {{ __('graphiques.end')  }}</label>
+                                    <input type="date"  name="end" @if(isset($end)) value="{{ $end }}" @else value="date("Y-m-d") }}" @endif  min="2018-01-01" max="2018-12-31"><br>
+                                    <div id="graph"  name="graph" style="width:100%; height:500px; max-width:80%; margin:auto"></div>
+                                    <?php
+                                         function sortFunction($a, $b) {
+                                            return strtotime($a[1]) - strtotime($b[1]);
+                                        }
+                                        usort($total_by_date, "sortFunction");
+                                        //var_dump($total_by_date);   
+                                    ?>
+                                    <script>
+                                    let arr = [];
+                                    @if(isset($total_by_date))
+                                        @foreach($total_by_date as $total)
+                                            <?php
+                                            $date_g = date_parse($total[1]);
+                                            //var_dump($date_g);   
+                                            ?>
+                                            arr.push(["{{ $date_g['day'] }}/{{$date_g['month']}}/{{$date_g['year']}}", {{ $total[0] }} ]);                         
+                                        @endforeach
+                                        Highcharts.chart("graph", {
+                                                chart: {
+                                                    type: 'area',
+                                                    spacingTop: 50,
+                                                },
+                                                title: {
+                                                    text: '{{ __('graphiques.title') }}',
+                                                },
+                                                xAxis: {
+                                                    title: {
+                                                        text: '{{ __('graphiques.graphx') }}',
+                                                    },
+                                                    labels: {
+                                                        formatter: function() {
+                                                            return arr[this.value][0];
+                                                        }
+                                                    },
+                                                    tickInterval: 1,
+                                                },
+                                                yAxis: {
+                                                    title: {
+                                                        text: '{{ __('graphiques.graphy') }}',
+                                                    },
+                                                    labels: {
+                                                        formatter: function() {
+                                                            return this.value;
+                                                        }
+                                                    }
 
+                                                },
+                                                series: [{
+                                                    name: 'Nombre de mesures',
+                                                    data:  arr,
+                                                }],
+                                            });
+                                    @endif  
+                                    </script>
+                                    <button type="submit" class="btn btn-primary">{{ __('graphiques.refresh') }} </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!-- END MAIN CONTENT-->
         </div>
         <!-- END PAGE CONTAINER-->
-
     </div>
 
     <!-- Jquery JS-->
