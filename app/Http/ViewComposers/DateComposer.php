@@ -31,17 +31,11 @@ class DateComposer
             $end = new Carbon();
 
         $req_opt = [];
-        //var_dump($start);
         $client = new Client();
 
-            //dd('test');
             $start_date  = new Carbon($start);
             $end_date  = new Carbon($end);
             $Nb_days =  $start_date->diffInDays($end_date);
-
-            //var_dump($start_date);
-            //var_dump($end_date);
-            //var_dump($Nb_days);
 
             // push the first day in the array
             $counter = $start_date->subDay(1);
@@ -52,7 +46,6 @@ class DateComposer
                 array_push($req_opt, $date->format('Y-m-d'));
             }
 
-            //dd($req_opt);
             $res = $client->post('https://api.heyliot.com:3000/payloads/payload-dates', ['form_params' => $req_opt, "headers" => ['x-access-token' => 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJGaXJzdE5hbWUiOiJTdGF0c1BhbmVsIiwiRW1haWwiOiJTdGF0c1BhbmVsQGhleWxpb3QuY29tIiwiUGFzc3dvcmQiOiI2MTQ1MDQ5Y2I5YTg2NzNlNjNjM2M4MzQzMDkzYTY4MSIsImlhdCI6MTU0MTY4OTY1NCwiZXhwIjoxNTY3NjA5NjU0fQ.hOOcQaEAAcs65jb6uZeA6HT1sdwJOb7MSAPr_mJ-FK4']]);
             $resultat = json_decode((string) $res->getBody());
             //dd($resultat);

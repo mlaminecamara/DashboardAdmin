@@ -1028,6 +1028,7 @@
                                             <tr>
                                                 <th>Nom du capteur</th>
                                                 <th>SigFoxID</th>
+                                                <th>Date de dernier payload</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -1036,8 +1037,12 @@
                                                 @continue
                                             @endif
                                             <tr>
+                                                <?php
+                                                $date_g = date_parse($device[2])
+                                                ?>
                                                 <td>{{ $device[0]}}</td>
                                                 <td> {{ $device[1] }} </td>
+                                                <td> {{ $date_g['day'] }}/{{$date_g['month']}}/{{$date_g['year'] }}</td>
                                             </tr>
                                         @endforeach    
                                         </tbody>

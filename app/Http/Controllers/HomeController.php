@@ -82,7 +82,7 @@ class HomeController extends Controller
                 
                 $numberof_inactivedevices = 0;
 
-                // 48h sans payload
+                // 48h sans payload ou payload null
                 foreach($new_array as $value)
                 {   
                     if($mstart > $value)
