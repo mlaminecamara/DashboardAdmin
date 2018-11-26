@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class mesures extends Model
 {
-    protected $fillable = ['date', 'nombre de mesures' ];
+    protected $fillable = ['date', 'nombre' ];
 }

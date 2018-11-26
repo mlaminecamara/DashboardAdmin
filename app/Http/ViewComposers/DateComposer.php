@@ -5,8 +5,10 @@ namespace App\Http\ViewComposers;
 use Illuminate\Http\Request;
 use GuzzleHttp\client;
 use Carbon\Carbon;
+use App\mesures;
 
 use Illuminate\View\View;
+use Illuminate\Support\Facades\DB;
 
 class DateComposer
 {
@@ -46,10 +48,14 @@ class DateComposer
                 array_push($req_opt, $date->format('Y-m-d'));
             }
 
-            $res = $client->post('https://api.heyliot.com:3000/payloads/payload-dates', ['form_params' => $req_opt, "headers" => ['x-access-token' => 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJGaXJzdE5hbWUiOiJTdGF0c1BhbmVsIiwiRW1haWwiOiJTdGF0c1BhbmVsQGhleWxpb3QuY29tIiwiUGFzc3dvcmQiOiI2MTQ1MDQ5Y2I5YTg2NzNlNjNjM2M4MzQzMDkzYTY4MSIsImlhdCI6MTU0MTY4OTY1NCwiZXhwIjoxNTY3NjA5NjU0fQ.hOOcQaEAAcs65jb6uZeA6HT1sdwJOb7MSAPr_mJ-FK4']]);
-            $resultat = json_decode((string) $res->getBody());
+            $mesures = DB::table('mesures')->get();
+            $mesures = json_decode($mesures, true);
+            //dd($mesures);
+
+            /*$res = $client->post('https://api.heyliot.com:3000/payloads/payload-dates', ['form_params' => $req_opt, "headers" => ['x-access-token' => 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJGaXJzdE5hbWUiOiJTdGF0c1BhbmVsIiwiRW1haWwiOiJTdGF0c1BhbmVsQGhleWxpb3QuY29tIiwiUGFzc3dvcmQiOiI2MTQ1MDQ5Y2I5YTg2NzNlNjNjM2M4MzQzMDkzYTY4MSIsImlhdCI6MTU0MTY4OTY1NCwiZXhwIjoxNTY3NjA5NjU0fQ.hOOcQaEAAcs65jb6uZeA6HT1sdwJOb7MSAPr_mJ-FK4']]);
+            $resultat = json_decode((string) $res->getBody());*/
             //dd($resultat);
-            return $view->with(["start_date" => $start_date, "end_date" =>$end_date, "start" => $start, "end" => $end, "dates" => $req_opt, "total_by_date" => $resultat]);
+            return $view->with(["start_date" => $start_date, "end_date" =>$end_date, "start" => $start, "end" => $end, "dates" => $req_opt, "total_by_date" => $mesures]);
 
     }
 

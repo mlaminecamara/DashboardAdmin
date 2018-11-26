@@ -16,7 +16,7 @@ class CreateMesuresTable extends Migration
         Schema::create('mesures', function (Blueprint $table) {
             $table->increments('id');
             $table->string('date');
-            $table->integer('nombre de mesures');
+            $table->integer('nombre');
             $table->timestamps();
         });
     }

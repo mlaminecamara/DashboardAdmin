@@ -34,10 +34,6 @@ class HomeController extends Controller
             $end_date  = new Carbon($end);
             $Nb_days =  $start_date->diffInDays($end_date);
 
-            //var_dump($start_date);
-            //var_dump($end_date);
-            //var_dump($Nb_days);
-
             // push the first day in the array
             $counter = $start_date->subDay(1);
             for($i = 0; $i<=$Nb_days; $i++)

@@ -444,7 +444,8 @@
                                             <div class="icon">
                                                 <i class="zmdi zmdi-chart"></i>
                                             </div>
-                                            <div class="text">  
+                                            <div class="text">
+
                                                 @if( $total_payloads > 99000)
                                                 <h2>{{ number_format(($total_payloads /1000), 1) }}K</h2>
                                                 @elseif( $total_payloads > 999999)
@@ -470,9 +471,9 @@
                                             </div>
                                             <div class="text">
                                             <?php
-                                                function sortFunction($a, $b) {
-                                                    return strtotime($a[1]) - strtotime($b[1]);
-                                                    }
+                                                 function sortFunction($a, $b) {
+                                                         return strtotime($a['date']) - strtotime($b['date']);
+                                                         }
                                                 usort($total_clients, "sortFunction");
                                                 //var_dump($total_clients);
                                             ?>
@@ -1013,7 +1014,7 @@
 
 <?php
     usort($total_by_date, "sortFunction");
-    //var_dump($total_by_date);   
+    var_dump($total_by_date);   
 ?>
 <script type="text/javascript">
     // Graph Mesures
