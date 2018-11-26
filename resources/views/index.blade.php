@@ -471,11 +471,13 @@
                                             </div>
                                             <div class="text">
                                             <?php
-                                                 function sortFunction($a, $b) {
-                                                         return strtotime($a['date']) - strtotime($b['date']);
-                                                         }
-                                                usort($total_clients, "sortFunction");
-                                                //var_dump($total_clients);
+                                                $sort = array();
+                                                foreach($total_by_date as $k=>$v)
+                                                {
+                                                    $sort['date'][$k] = $v['date'];
+                                                }
+                                                array_multisort($sort['date'], SORT_ASC, $total_by_date);
+                                                //var_dump($total_by_date);
                                             ?>
                                                 
                                                 <h2>
@@ -532,7 +534,7 @@
                                             </div>
                                             <div class="text">
                                             <?php
-                                            usort($total_device, "sortFunction");
+                                            //usort($total_device, "sortFunction");
                                             //var_dump($total_device);
                                             ?>
                                                 <h2> 
@@ -1013,7 +1015,7 @@
     </div>
 
 <?php
-    usort($total_by_date, "sortFunction");
+    //usort($total_by_date, "sortFunction");
     var_dump($total_by_date);   
 ?>
 <script type="text/javascript">
@@ -1023,13 +1025,13 @@
 
     @foreach($total_by_date as $d)
         <?php
-            $date_g = date_parse($d[1]);
+            $date_g = date_parse($d["date"]);
         ?>
         field_dates.push("{{ $date_g['day'] }}/{{$date_g['month']}}/{{$date_g['year'] }} ");
     @endforeach
     
     @foreach($total_by_date as $d)
-        field_val.push("{{ $d[0] }}");
+        field_val.push("{{ $d["nombre"] }}");
     @endforeach
     
     //console.log(field_dates);

@@ -35,6 +35,7 @@ class Kernel extends ConsoleKernel
 
         $schedule->call(function() {
         
+        // La requête pour l'obtention des mesures 
         $start = new Carbon();
         $start->subDay(7);
       
@@ -57,15 +58,62 @@ class Kernel extends ConsoleKernel
             }
         $res = $client->post('https://api.heyliot.com:3000/payloads/payload-dates', ['form_params' => $req_opt, "headers" => ['x-access-token' => 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJGaXJzdE5hbWUiOiJTdGF0c1BhbmVsIiwiRW1haWwiOiJTdGF0c1BhbmVsQGhleWxpb3QuY29tIiwiUGFzc3dvcmQiOiI2MTQ1MDQ5Y2I5YTg2NzNlNjNjM2M4MzQzMDkzYTY4MSIsImlhdCI6MTU0MTY4OTY1NCwiZXhwIjoxNTY3NjA5NjU0fQ.hOOcQaEAAcs65jb6uZeA6HT1sdwJOb7MSAPr_mJ-FK4']]);
         $resultat = json_decode((string) $res->getBody());
+        
+        // La requête pour l'obtention du total clients
+
+            $res_clients = $client->post('https://api.heyliot.com:3000/organisations/organisations-count', ['form_params' => $req_opt, "headers" => ['x-access-token' => 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJGaXJzdE5hbWUiOiJTdGF0c1BhbmVsIiwiRW1haWwiOiJTdGF0c1BhbmVsQGhleWxpb3QuY29tIiwiUGFzc3dvcmQiOiI2MTQ1MDQ5Y2I5YTg2NzNlNjNjM2M4MzQzMDkzYTY4MSIsImlhdCI6MTU0MTY4OTY1NCwiZXhwIjoxNTY3NjA5NjU0fQ.hOOcQaEAAcs65jb6uZeA6HT1sdwJOb7MSAPr_mJ-FK4']]);
+            $total_clients = json_decode((string) $res_clients->getBody()); 
+
+            //dd($total_clients);
+
+        // La requête pour l'obtention du total capteurs
+            $res_device = $client->post('https://api.heyliot.com:3000/devices/device-count', ['form_params' => $req_opt, "headers" => ['x-access-token' => 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJGaXJzdE5hbWUiOiJTdGF0c1BhbmVsIiwiRW1haWwiOiJTdGF0c1BhbmVsQGhleWxpb3QuY29tIiwiUGFzc3dvcmQiOiI2MTQ1MDQ5Y2I5YTg2NzNlNjNjM2M4MzQzMDkzYTY4MSIsImlhdCI6MTU0MTY4OTY1NCwiZXhwIjoxNTY3NjA5NjU0fQ.hOOcQaEAAcs65jb6uZeA6HT1sdwJOb7MSAPr_mJ-FK4']]);
+            $total_device = json_decode((string) $res_device->getBody());
+        
+            //dd($total_device);
+
+        // La requête pour l'obtention des capteurs inactifs
+
+            $res_CapteursInactifs = $client->get('https://api.heyliot.com:3000/get-devices-id', ["headers" => ['x-access-token' => 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJGaXJzdE5hbWUiOiJTdGF0c1BhbmVsIiwiRW1haWwiOiJTdGF0c1BhbmVsQGhleWxpb3QuY29tIiwiUGFzc3dvcmQiOiI2MTQ1MDQ5Y2I5YTg2NzNlNjNjM2M4MzQzMDkzYTY4MSIsImlhdCI6MTU0MTY4OTY1NCwiZXhwIjoxNTY3NjA5NjU0fQ.hOOcQaEAAcs65jb6uZeA6HT1sdwJOb7MSAPr_mJ-FK4']]);
+            $result = json_decode($res_CapteursInactifs->getBody());
             
-            foreach($resultat as $val) 
+            $arr = array();
+            $new_array = array();
+            $mstart = new Carbon();
+
+            foreach($result as $res)
             {
-                $mesure = new mesures([
-                    'date' =>  new Carbon($val[1]),
-                    'nombre' => $val[0],
-                ]);
-                $mesure->save();
+                $lastpayload = $res[3]->LastPayload_Date;
+                array_push($new_array, $lastpayload);
             }
+
+            //var_dump($new_array);
+
+            $mstart->subDay(8);
+
+            for($i=0; $i <= 7; $i++)
+            {
+                $mstart->addDays(1);
+                
+                $numberof_inactivedevices = 0;
+
+                // 48h sans payload ou payload null
+                foreach($new_array as $value)
+                {   
+                    if($mstart > $value)
+                    {
+                        //var_dump($value);
+                        $datediff= $mstart->diffInDays($value);
+                        //dd($datediff);
+                            if($value == null || $datediff > 2)
+                            {    
+                                $numberof_inactivedevices++;
+                            }
+                    }
+                }
+                array_push($arr, [$mstart->format('Y-m-d'), $numberof_inactivedevices]);   
+            }
+
 
         })->everyMinute();
 
