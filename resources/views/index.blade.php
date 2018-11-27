@@ -445,6 +445,15 @@
                                                 <i class="zmdi zmdi-chart"></i>
                                             </div>
                                             <div class="text">
+                                                <?php
+                                                 $sort = array();
+                                                 foreach($total_by_date as $k=>$v)
+                                                 {
+                                                     $sort['date'][$k] = $v['date'];
+                                                 }
+                                                 array_multisort($sort['date'], SORT_ASC, $total_by_date);
+                                                  //var_dump($total_by_date);
+                                                ?>
 
                                                 @if( $total_payloads > 99000)
                                                 <h2>{{ number_format(($total_payloads /1000), 1) }}K</h2>
@@ -471,22 +480,21 @@
                                             </div>
                                             <div class="text">
                                             <?php
-                                                $sort = array();
-                                                foreach($total_by_date as $k=>$v)
-                                                {
-                                                    $sort['date'][$k] = $v['date'];
-                                                }
-                                                array_multisort($sort['date'], SORT_ASC, $total_by_date);
-                                                //var_dump($total_by_date);
+                                               foreach($total_clients as $k=>$v)
+                                               {
+                                                   $sort['date_client'][$k] = $v['date_client'];
+                                               }
+                                               array_multisort($sort['date_client'], SORT_ASC, $total_clients);
+                                                //var_dump($total_clients);
                                             ?>
                                                 
                                                 <h2>
                                                 @foreach($total_clients as $total)
                                                     <?php
-                                                    $date_g = date_parse($total[1])
+                                                    $date_g = date_parse($total['date_client'])
                                                     ?>
                                                     @if($loop->last)
-                                                        {{ $total[0] }}
+                                                        {{ $total['nombre_client'] }}
                                                     @endif
                                                 @endforeach
                                                 </h2>
@@ -512,7 +520,7 @@
                                                 <h2>
                                                 @foreach($total_capteurs_inactifs as $inactifs)
                                                     @if($loop->last)
-                                                        {{ $inactifs[1] }}
+                                                        {{ $inactifs['nombre_inactive'] }}
                                                     @endif
                                                 @endforeach
                                                 </h2>
@@ -534,13 +542,16 @@
                                             </div>
                                             <div class="text">
                                             <?php
-                                            //usort($total_device, "sortFunction");
-                                            //var_dump($total_device);
+                                           foreach($total_device as $k=>$v)
+                                           {
+                                               $sort['date_device'][$k] = $v['date_device'];
+                                           }
+                                           array_multisort($sort['date_device'], SORT_ASC, $total_device);
                                             ?>
                                                 <h2> 
                                                 @foreach($total_device as $device)
                                                     @if($loop->last)
-                                                    {{ $device[0] }}
+                                                    {{ $device['nombre_device'] }}
                                                     @endif
                                                 @endforeach
                                                 </h2>
@@ -1016,7 +1027,7 @@
 
 <?php
     //usort($total_by_date, "sortFunction");
-    var_dump($total_by_date);   
+    //var_dump($total_by_date);   
 ?>
 <script type="text/javascript">
     // Graph Mesures
@@ -1044,13 +1055,13 @@
 
      @foreach($total_clients as $client)
         <?php
-            $date_g = date_parse($client[1]);
+            $date_g = date_parse($client["date_client"]);
         ?>
         field_dates_clients.push("{{ $date_g['day'] }}/{{$date_g['month']}}/{{$date_g['year'] }} ");
     @endforeach
     
     @foreach($total_clients as $client)
-        field_val_clients.push("{{ $client[0] }}");
+        field_val_clients.push("{{ $client["nombre_client"] }}");
     @endforeach
 
     //Grpah capteurs inactifs
@@ -1060,13 +1071,13 @@
 
      @foreach($total_capteurs_inactifs as $inactifs)
         <?php
-            $date_g = date_parse($inactifs[0]);
+            $date_g = date_parse($inactifs["date_inactive"]);
         ?>
         field_dates_capteurs_inactifs.push("{{ $date_g['day'] }}/{{$date_g['month']}}/{{$date_g['year'] }} ");
     @endforeach
     
     @foreach($total_capteurs_inactifs as $inactifs)
-        field_val_capteurs_inactifs.push("{{ $inactifs[1] }}");
+        field_val_capteurs_inactifs.push("{{ $inactifs["nombre_inactive"] }}");
     @endforeach
 
 
@@ -1078,13 +1089,13 @@
 
      @foreach($total_device as $device)
         <?php
-            $date_g = date_parse($device[1]);
+            $date_g = date_parse($device["date_device"]);
         ?>
         field_dates_capteurs.push("{{ $date_g['day'] }}/{{$date_g['month']}}/{{$date_g['year'] }} ");
     @endforeach
     
     @foreach($total_device as $device)
-        field_val_capteurs.push("{{ $device[0] }}");
+        field_val_capteurs.push("{{ $device["nombre_device"] }}");
     @endforeach
 
    

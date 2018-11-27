@@ -31,7 +31,7 @@ class DateComposer
         }
         if(!$end)
             $end = new Carbon();
-
+  
         $req_opt = [];
         $client = new Client();
 
@@ -48,7 +48,10 @@ class DateComposer
                 array_push($req_opt, $date->format('Y-m-d'));
             }
 
-            $mesures = DB::table('mesures')->get();
+            $mesures = DB::table('mesures')
+                                    ->orderBy('created_at', 'desc')
+                                    ->limit(7)
+                                    ->get();
             $mesures = json_decode($mesures, true);
             //dd($mesures);
             

@@ -461,21 +461,22 @@
                                     <input type="date"  name="end" @if(isset($end)) value="{{ $end }}" @else value="date("Y-m-d") }}" @endif  min="2018-01-01" max="2018-12-31"><br>
                                     <div id="graph"  name="graph" style="width:100%; height:500px; max-width:80%; margin:auto"></div>
                                     <?php
-                                         function sortFunction($a, $b) {
-                                            return strtotime($a[1]) - strtotime($b[1]);
+                                        $sort = array();
+                                        foreach($total_by_date as $k=>$v)
+                                        {
+                                            $sort['date'][$k] = $v['date'];
                                         }
-                                        usort($total_by_date, "sortFunction");
-                                        //var_dump($total_by_date);   
+                                        array_multisort($sort['date'], SORT_ASC, $total_by_date);
                                     ?>
                                     <script>
                                     let arr = [];
                                     @if(isset($total_by_date))
                                         @foreach($total_by_date as $total)
                                             <?php
-                                            $date_g = date_parse($total[1]);
+                                            $date_g = date_parse($total["date"]);
                                             //var_dump($date_g);   
                                             ?>
-                                            arr.push(["{{ $date_g['day'] }}/{{$date_g['month']}}/{{$date_g['year']}}", {{ $total[0] }} ]);                         
+                                            arr.push(["{{ $date_g['day'] }}/{{$date_g['month']}}/{{$date_g['year']}}", {{ $total["nombre"] }} ]);                         
                                         @endforeach
                                         Highcharts.chart("graph", {
                                                 chart: {
