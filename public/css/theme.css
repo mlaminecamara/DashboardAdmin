@@ -281,7 +281,7 @@ section {
 }
 
 .page-container {
-    background: #e5e5e5;
+    background: #777f80;
     /*padding-left: 300px;*/
     width: 100%;
 }
@@ -1581,7 +1581,7 @@ section {
 }*/
 @media (min-width: 991px) {
     .logo1 {
-        background-color: #007cb3;
+
         z-index: 3;
         position: fixed;
         padding-right: 10px;
@@ -3150,7 +3150,7 @@ section {
 }
 
 .overview-item--c2 {
-    background-color:#38ef7d;
+    background-color:#3a4158;
 }
 
 .overview-item--c3 {
@@ -4662,9 +4662,8 @@ section {
 
 .table-data3 thead tr th {
     font-size: 16px;
-    color: #fff;
-    font-weight: 400;
-    text-transform: capitalize;
+    color: #000;
+    font-weight: bold;
     padding: 18px 40px;
     padding-right: 10px;
 }
@@ -4730,6 +4729,14 @@ section {
     text-align: center;
     padding: 60px 0;
     padding-top: 20px;
+}
+
+.footer {
+    color: rgb(10, 10, 10);
+    float: right;
+    font-size: 12px;
+    display: block;
+    margin-top: 450px;
 }
 
 .copyright p {

@@ -27,9 +27,9 @@ class HomeController extends Controller
                                     ->get();
             $total_clients = json_decode($clients, true);
             
-            //dd($total_clients);
         
-        // Device count
+        
+            // Device count
             $devices = DB::table('devices')
                                     ->orderBy('created_at', 'desc')
                                     ->limit(7)
@@ -44,13 +44,10 @@ class HomeController extends Controller
                                                     ->limit(8)
                                                     ->get();
             $result = json_decode($CapteursInactifs, true);
-            //dd($result);
-
+            
+       
             return view("index", ["total_device" => $total_device, "total_clients" => $total_clients, "total_capteurs_inactifs" => $result]);
-           
-            //dd($new_array);
-            //dd($numberof_inactivedevices); 
-
+    
     }
                  
 

@@ -1,3 +1,4 @@
+<?php use Carbon\Carbon;?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,6 +33,7 @@
 
     <!-- Main CSS-->
     <link href="css/theme.css" rel="stylesheet" media="all">
+    <meta http-equiv="refresh" content="900" />
 
 </head>
 
@@ -252,177 +254,7 @@
                     </a>
             </div>
             <!-- HEADER DESKTOP-->
-            <header class="header-desktop">
-                    <div class="section__content section__content--p30">
-                        <div class="container-fluid">
-                        <div class="header-wrap">
-                            <form class="form-header" action="{{ url('/home') }}" >
-                                <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
-                                <button class="au-btn--submit" type="submit">
-                                    <i class="zmdi zmdi-search"></i>
-                                </button>
-                            </form>
-                            <!--<div class="header-button">
-                                <div class="noti-wrap">
-                                    <div class="noti__item js-item-menu">
-                                        <i class="zmdi zmdi-comment-more"></i>
-                                        <span class="quantity">1</span>
-                                        <div class="mess-dropdown js-dropdown">
-                                            <div class="mess__title">
-                                                <p>You have 2 news message</p>
-                                            </div>
-                                            <div class="mess__item">
-                                                <div class="image img-cir img-40">
-                                                    <img src="images/icon/avatar-06.jpg" alt="Michelle Moreno" />
-                                                </div>
-                                                <div class="content">
-                                                    <h6>Michelle Moreno</h6>
-                                                    <p>Have sent a photo</p>
-                                                    <span class="time">3 min ago</span>
-                                                </div>
-                                            </div>
-                                            <div class="mess__item">
-                                                <div class="image img-cir img-40">
-                                                    <img src="images/icon/avatar-04.jpg" alt="Diane Myers" />
-                                                </div>
-                                                <div class="content">
-                                                    <h6>Diane Myers</h6>
-                                                    <p>You are now connected on message</p>
-                                                    <span class="time">Yesterday</span>
-                                                </div>
-                                            </div>
-                                            <div class="mess__footer">
-                                                <a href="#">View all messages</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="noti__item js-item-menu">
-                                        <i class="zmdi zmdi-email"></i>
-                                        <span class="quantity">1</span>
-                                        <div class="email-dropdown js-dropdown">
-                                            <div class="email__title">
-                                                <p>You have 3 New Emails</p>
-                                            </div>
-                                            <div class="email__item">
-                                                <div class="image img-cir img-40">
-                                                    <img src="images/icon/avatar-06.jpg" alt="Cynthia Harvey" />
-                                                </div>
-                                                <div class="content">
-                                                    <p>Meeting about new dashboard...</p>
-                                                    <span>Cynthia Harvey, 3 min ago</span>
-                                                </div>
-                                            </div>
-                                            <div class="email__item">
-                                                <div class="image img-cir img-40">
-                                                    <img src="images/icon/avatar-05.jpg" alt="Cynthia Harvey" />
-                                                </div>
-                                                <div class="content">
-                                                    <p>Meeting about new dashboard...</p>
-                                                    <span>Cynthia Harvey, Yesterday</span>
-                                                </div>
-                                            </div>
-                                            <div class="email__item">
-                                                <div class="image img-cir img-40">
-                                                    <img src="images/icon/avatar-04.jpg" alt="Cynthia Harvey" />
-                                                </div>
-                                                <div class="content">
-                                                    <p>Meeting about new dashboard...</p>
-                                                    <span>Cynthia Harvey, April 12,,2018</span>
-                                                </div>
-                                            </div>
-                                            <div class="email__footer">
-                                                <a href="#">See all emails</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="noti__item js-item-menu">
-                                        <i class="zmdi zmdi-notifications"></i>
-                                        <span class="quantity">3</span>
-                                        <div class="notifi-dropdown js-dropdown">
-                                            <div class="notifi__title">
-                                                <p>You have 3 Notifications</p>
-                                            </div>
-                                            <div class="notifi__item">
-                                                <div class="bg-c1 img-cir img-40">
-                                                    <i class="zmdi zmdi-email-open"></i>
-                                                </div>
-                                                <div class="content">
-                                                    <p>You got a email notification</p>
-                                                    <span class="date">April 12, 2018 06:50</span>
-                                                </div>
-                                            </div>
-                                            <div class="notifi__item">
-                                                <div class="bg-c2 img-cir img-40">
-                                                    <i class="zmdi zmdi-account-box"></i>
-                                                </div>
-                                                <div class="content">
-                                                    <p>Your account has been blocked</p>
-                                                    <span class="date">April 12, 2018 06:50</span>
-                                                </div>
-                                            </div>
-                                            <div class="notifi__item">
-                                                <div class="bg-c3 img-cir img-40">
-                                                    <i class="zmdi zmdi-file-text"></i>
-                                                </div>
-                                                <div class="content">
-                                                    <p>You got a new file</p>
-                                                    <span class="date">April 12, 2018 06:50</span>
-                                                </div>
-                                            </div>
-                                            <div class="notifi__footer">
-                                                <a href="#">All notifications</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="account-wrap">
-                                    <div class="account-item clearfix js-item-menu">
-                                        <div class="image">
-                                            <img src="images/icon/avatar-01.jpg" alt="John Doe" />
-                                        </div>
-                                        <div class="content">
-                                            <a class="js-acc-btn" href="#">john doe</a>
-                                        </div>
-                                        <div class="account-dropdown js-dropdown">
-                                            <div class="info clearfix">
-                                                <div class="image">
-                                                    <a href="#">
-                                                        <img src="images/icon/avatar-01.jpg" alt="John Doe" />
-                                                    </a>
-                                                </div>
-                                                <div class="content">
-                                                    <h5 class="name">
-                                                        <a href="#">john doe</a>
-                                                    </h5>
-                                                    <span class="email">johndoe@example.com</span>
-                                                </div>
-                                            </div>
-                                            <div class="account-dropdown__body">
-                                                <div class="account-dropdown__item">
-                                                    <a href="#">
-                                                        <i class="zmdi zmdi-account"></i>Account</a>
-                                                </div>
-                                                <div class="account-dropdown__item">
-                                                    <a href="#">
-                                                        <i class="zmdi zmdi-settings"></i>Setting</a>
-                                                </div>
-                                                <div class="account-dropdown__item">
-                                                    <a href="#">
-                                                        <i class="zmdi zmdi-money-box"></i>Billing</a>
-                                                </div>
-                                            </div>
-                                            <div class="account-dropdown__footer">
-                                                <a href="#">
-                                                    <i class="zmdi zmdi-power"></i>Logout</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> -->
-                        </div>
-                    </div>
-                </div>
-            </header>
+           
             <!-- HEADER DESKTOP-->
 
             <!-- MAIN CONTENT-->
@@ -432,47 +264,103 @@
                         <div class="row m-t-25">
                             <div class="col-md-12">
                                 <div class="overview-wrap">
-                                    <h2 class="title-1">overview</h2>
+                                    <h2 class="title-1"></h2>
                                 </div>
                             </div>
                         </div>
+
                         <div class="row m-t-25 ">
-                            <a href="{{ url('/chart') }}"><div class="col-sm-6 col-lg-3">
+                            <a href="{{ url('/home') }}"><div class="col-sm-6 col-lg-3">
                                 <div class="overview-item overview-item--c1">
+                                    <div class="overview__inner">
+                                        <div class="overview-box clearfix">
+                                            <div class="icon">
+                                                <i class="zmdi zmdi-device-hub"></i>
+                                            </div>
+                                            <div class="text">
+                                                <?php
+                                                foreach($total_device as $k=>$v)
+                                                {
+                                                    $sort['date_device'][$k] = $v['date_device'];
+                                                }
+                                                array_multisort($sort['date_device'], SORT_ASC, $total_device);
+                                                ?>
+                                                <h2> 
+                                                @foreach($total_device as $device)
+                                                @if($loop->last)
+                                                    {{ $device['nombre_device'] }}
+                                                @endif
+                                                @endforeach
+                                                </h2>
+                                                <span> Capteurs</span>
+                                            </div>
+                                        </div>
+                                        <div class="overview-chart">
+                                            <canvas id="widgetChart4"></canvas>
+                                        </div>
+                                    </div>
+                                </div></a>
+                            </div>
+                            <a href="{{ url('/capteurs-inactifs') }}"><div class="col-sm-6 col-lg-3">
+                                <div class="overview-item overview-item--c2">
+                                    <div class="overview__inner">
+                                        <div class="overview-box clearfix">
+                                            <div class="icon">
+                                                <i class="zmdi zmdi-devices-off"></i>
+                                            </div>
+                                            <div class="text">
+                                            <?php
+                                               foreach($total_capteurs_inactifs as $k=>$v)
+                                               {
+                                                   $sort['date_inactive'][$k] = $v['date_inactive'];
+                                               }
+                                               array_multisort($sort['date_inactive'], SORT_ASC, $total_capteurs_inactifs);
+                                                //var_dump($total_clients);
+                                            ?>
+
+                                                <h2>
+                                                @foreach($total_capteurs_inactifs as $inactifs)
+                                                    @if($loop->last)
+                                                        {{ $inactifs['nombre_inactive'] }}
+                                                    @endif
+                                                @endforeach
+                                                </h2>
+                                                <span>Capteurs inactifs</span>
+                                            </div>
+                                        </div>
+                                        <div class="overview-chart">
+                                            <canvas id="widgetChart3"></canvas>
+                                        </div>
+                                    </div>
+                                </div></a>
+                            </div>
+                            
+                            <a href="{{ url('/chart') }}"><div class="col-sm-6 col-lg-3">
+                                <div class="overview-item overview-item--c3">
                                     <div class="overview__inner">
                                         <div class="overview-box clearfix">
                                             <div class="icon">
                                                 <i class="zmdi zmdi-chart"></i>
                                             </div>
                                             <div class="text">
-                                                <?php
-                                                 $sort = array();
-                                                 foreach($total_by_date as $k=>$v)
-                                                 {
-                                                     $sort['date'][$k] = $v['date'];
-                                                 }
-                                                 array_multisort($sort['date'], SORT_ASC, $total_by_date);
-                                                  //var_dump($total_by_date);
-                                                ?>
-
-                                                @if( $total_payloads > 99000)
-                                                <h2>{{ number_format(($total_payloads /1000), 1) }}K</h2>
-                                                @elseif( $total_payloads > 999999)
-                                                <h2>{{ number_format(($total_payloads / 1000000), 1) }}M</h2>
+                                                @if( $total_payloads[0]['nombre_payloads'] > 99000)
+                                                <h2>{{ number_format(($total_payloads[0]['nombre_payloads'] /1000), 1) }}K</h2>
+                                                @elseif( $total_payloads[0]['nombre_payloads'] > 999999)
+                                                <h2>{{ number_format(($total_payloads[0]['nombre_payloads'] / 1000000), 1) }}M</h2>
                                                 @else
-                                                <h2>{{ $total_payloads }}</h2>
+                                                <h2>{{ $total_payloads[0]['nombre_payloads'] }}</h2>
                                                 @endif
                                                 <span>  Mesures</span>
                                             </div>
                                         </div>
                                         <div class="overview-chart">
-                                            <canvas id="widgetChart1"></canvas>
+                                            <canvas id="widgetChart1" ></canvas>
                                         </div>
                                     </div>
                                 </div></a>
                             </div>
                             <a href="{{ url('/home') }}"><div class="col-sm-6 col-lg-3">
-                                <div class="overview-item overview-item--c2">
+                                <div class="overview-item overview-item--c4">
                                     <div class="overview__inner">
                                         <div class="overview-box clearfix">
                                             <div class="icon">
@@ -502,64 +390,7 @@
                                             </div>
                                         </div>
                                         <div class="overview-chart">
-                                            <canvas id="widgetChart2"></canvas>
-                                        </div>
-                                    </div>
-                                </div></a>
-                            </div>
-                            
-                            <a href="{{ url('/capteurs-inactifs') }}"><div class="col-sm-6 col-lg-3">
-                                <div class="overview-item overview-item--c3">
-                                    <div class="overview__inner">
-                                        <div class="overview-box clearfix">
-                                            <div class="icon">
-                                                <i class="zmdi zmdi-devices-off"></i>
-                                            </div>
-                                            <div class="text">
-
-                                                <h2>
-                                                @foreach($total_capteurs_inactifs as $inactifs)
-                                                    @if($loop->last)
-                                                        {{ $inactifs['nombre_inactive'] }}
-                                                    @endif
-                                                @endforeach
-                                                </h2>
-                                                <span>Capteurs inactifs</span>
-                                            </div>
-                                        </div>
-                                        <div class="overview-chart">
-                                            <canvas id="widgetChart3" ></canvas>
-                                        </div>
-                                    </div>
-                                </div></a>
-                            </div>
-                            <a href="{{ url('/home') }}"><div class="col-sm-6 col-lg-3">
-                                <div class="overview-item overview-item--c4">
-                                    <div class="overview__inner">
-                                        <div class="overview-box clearfix">
-                                            <div class="icon">
-                                                <i class="zmdi zmdi-device-hub"></i>
-                                            </div>
-                                            <div class="text">
-                                            <?php
-                                           foreach($total_device as $k=>$v)
-                                           {
-                                               $sort['date_device'][$k] = $v['date_device'];
-                                           }
-                                           array_multisort($sort['date_device'], SORT_ASC, $total_device);
-                                            ?>
-                                                <h2> 
-                                                @foreach($total_device as $device)
-                                                    @if($loop->last)
-                                                    {{ $device['nombre_device'] }}
-                                                    @endif
-                                                @endforeach
-                                                </h2>
-                                                <span> Capteurs</span>
-                                            </div>
-                                        </div>
-                                        <div class="overview-chart">
-                                            <canvas id="widgetChart4" ></canvas>
+                                            <canvas id="widgetChart2" ></canvas>
                                         </div>
                                     </div>
                                 </div></a>
@@ -1023,11 +854,41 @@
             <!-- END MAIN CONTENT-->
             <!-- END PAGE CONTAINER-->
         </div>
+        <footer class="footer">
+        @foreach($total_capteurs_inactifs as $inactifs)
+            @if($loop->first)
+            <?php
+            $date = Carbon::parse($inactifs['updated_at'])->timezone('Europe/Paris');
+            $day = ((string)$date->day);
+            $month = ((string)$date->month);
+            $hour = ((string)$date->hour);
+            $minute = ((string)$date->minute);
+            if(strlen($day) == 1)
+                $day= str_pad($day, 2, "0", STR_PAD_LEFT);
+
+            if(strlen($month) == 1)
+                $month= str_pad($month, 2, "0", STR_PAD_LEFT);
+                                                            
+            if(strlen($hour) == 1)
+                $hour= str_pad($hour, 2, "0", STR_PAD_LEFT);
+                                                            
+            if(strlen($minute) == 1)
+                $minute= str_pad($minute, 2, "0", STR_PAD_LEFT);
+            ?>
+            Dernière actualisation: {{ $day }}/{{ $month}}/{{ $date->year}} à {{ $hour }}h{{ $minute }}
+            @endif
+        @endforeach
+        </footer>
     </div>
 
 <?php
-    //usort($total_by_date, "sortFunction");
-    //var_dump($total_by_date);   
+    $sort = array();
+    foreach($total_by_date as $k=>$v)
+    {
+        $sort['date'][$k] = $v['date'];
+    }
+    array_multisort($sort['date'], SORT_ASC, $total_by_date);
+   //var_dump($total_by_date);
 ?>
 <script type="text/javascript">
     // Graph Mesures
@@ -1037,6 +898,12 @@
     @foreach($total_by_date as $d)
         <?php
             $date_g = date_parse($d["date"]);
+
+            if(strlen($date_g['day']) == 1)
+                $date_g['day'] = '0'.$date_g['day']; 
+
+            if(strlen($date_g['month']) == 1)
+                $date_g['month'] = '0'.$date_g['month'];
         ?>
         field_dates.push("{{ $date_g['day'] }}/{{$date_g['month']}}/{{$date_g['year'] }} ");
     @endforeach
@@ -1056,6 +923,11 @@
      @foreach($total_clients as $client)
         <?php
             $date_g = date_parse($client["date_client"]);
+            if(strlen($date_g['day']) == 1)
+                $date_g['day'] = '0'.$date_g['day']; 
+
+            if(strlen($date_g['month']) == 1)
+                $date_g['month'] = '0'.$date_g['month'];
         ?>
         field_dates_clients.push("{{ $date_g['day'] }}/{{$date_g['month']}}/{{$date_g['year'] }} ");
     @endforeach
@@ -1072,6 +944,11 @@
      @foreach($total_capteurs_inactifs as $inactifs)
         <?php
             $date_g = date_parse($inactifs["date_inactive"]);
+            if(strlen($date_g['day']) == 1)
+                $date_g['day'] = '0'.$date_g['day']; 
+
+            if(strlen($date_g['month']) == 1)
+                $date_g['month'] = '0'.$date_g['month'];
         ?>
         field_dates_capteurs_inactifs.push("{{ $date_g['day'] }}/{{$date_g['month']}}/{{$date_g['year'] }} ");
     @endforeach
@@ -1090,6 +967,11 @@
      @foreach($total_device as $device)
         <?php
             $date_g = date_parse($device["date_device"]);
+            if(strlen($date_g['day']) == 1)
+                $date_g['day'] = '0'.$date_g['day']; 
+
+            if(strlen($date_g['month']) == 1)
+                $date_g['month'] = '0'.$date_g['month'];
         ?>
         field_dates_capteurs.push("{{ $date_g['day'] }}/{{$date_g['month']}}/{{$date_g['year'] }} ");
     @endforeach

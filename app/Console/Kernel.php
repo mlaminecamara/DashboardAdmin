@@ -11,6 +11,7 @@ use App\mesures;
 use App\clients;
 use App\device;
 use App\inactive_device;
+use App\payload;
 use App\Http\ViewComposers\DateComposer;
 use Illuminate\Http\Request;
 
@@ -47,6 +48,14 @@ class Kernel extends ConsoleKernel
         $req_opt = [];
         $client = new Client();
 
+            // La requête pour le nombre total de payloads
+            $res_payloads = $client->get('https://api.heyliot.com:3000/payloads/payload-count', ["headers" => ['x-access-token' => 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJGaXJzdE5hbWUiOiJTdGF0c1BhbmVsIiwiRW1haWwiOiJTdGF0c1BhbmVsQGhleWxpb3QuY29tIiwiUGFzc3dvcmQiOiI2MTQ1MDQ5Y2I5YTg2NzNlNjNjM2M4MzQzMDkzYTY4MSIsImlhdCI6MTU0MTY4OTY1NCwiZXhwIjoxNTY3NjA5NjU0fQ.hOOcQaEAAcs65jb6uZeA6HT1sdwJOb7MSAPr_mJ-FK4']]);
+            $total_payloads = (string) $res_payloads->getBody();
+            //dd($total_payloads);
+            $total_metric = new payload();
+            $value = $total_metric->store($total_payloads);
+            
+            // Calcul pour obtenir les dates dans req_opt afin d'effectuer le reste des requêtes
             $start_date  = new Carbon($start);
             $end_date  = new Carbon($end);
             $Nb_days =  $start_date->diffInDays($end_date);
@@ -59,6 +68,8 @@ class Kernel extends ConsoleKernel
                 $date = $counter->addDays(1);
                 array_push($req_opt, $date->format('Y-m-d'));
             }
+
+            // La requête pour le nombre de payloads par date
             $res = $client->post('https://api.heyliot.com:3000/payloads/payload-dates', ['form_params' => $req_opt, "headers" => ['x-access-token' => 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJGaXJzdE5hbWUiOiJTdGF0c1BhbmVsIiwiRW1haWwiOiJTdGF0c1BhbmVsQGhleWxpb3QuY29tIiwiUGFzc3dvcmQiOiI2MTQ1MDQ5Y2I5YTg2NzNlNjNjM2M4MzQzMDkzYTY4MSIsImlhdCI6MTU0MTY4OTY1NCwiZXhwIjoxNTY3NjA5NjU0fQ.hOOcQaEAAcs65jb6uZeA6HT1sdwJOb7MSAPr_mJ-FK4']]);
             $resultat = json_decode((string) $res->getBody());
             $metrics = new mesures();
@@ -124,7 +135,7 @@ class Kernel extends ConsoleKernel
                 }
                 array_push($arr, [$mstart->format('Y-m-d'), $numberof_inactivedevices]);   
             }
-
+            
             $inactive_hardware = new inactive_device();
             $value4 = $inactive_hardware->store($arr);
             //dd($value4);
