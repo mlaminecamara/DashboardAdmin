@@ -49,9 +49,6 @@ class HomeController extends Controller
             return view("index", ["total_device" => $total_device, "total_clients" => $total_clients, "total_capteurs_inactifs" => $result]);
     
     }
-                 
-
-        
            
 }
 

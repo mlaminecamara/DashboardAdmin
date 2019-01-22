@@ -33,7 +33,7 @@
 
     <!-- Main CSS-->
     <link href="css/theme.css" rel="stylesheet" media="all">
-    <meta http-equiv="refresh" content="900" />
+    <meta http-equiv="refresh" content="300" />
 
 </head>
 
