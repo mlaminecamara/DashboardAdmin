@@ -888,7 +888,7 @@
         $sort['date'][$k] = $v['date'];
     }
     array_multisort($sort['date'], SORT_ASC, $total_by_date);
-   //var_dump($total_by_date);
+   //dd($total_by_date);
 ?>
 <script type="text/javascript">
     // Graph Mesures
