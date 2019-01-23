@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use GuzzleHttp\client;
+use GuzzleHttp\Client;
 use Carbon\Carbon;
 use App\mesures;
 use App\clients;

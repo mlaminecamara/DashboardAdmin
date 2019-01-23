@@ -3,7 +3,7 @@
 namespace App\Http\ViewComposers;
 
 use Illuminate\Http\Request;
-use GuzzleHttp\client;
+use GuzzleHttp\Client;
 use Carbon\Carbon;
 use App\mesures;
 

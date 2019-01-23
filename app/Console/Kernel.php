@@ -5,7 +5,7 @@ namespace App\Console;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use Illuminate\View\View;
-use GuzzleHttp\client;
+use GuzzleHttp\Client;
 use Carbon\Carbon;
 use App\mesures;
 use App\clients;
