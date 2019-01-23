@@ -13,12 +13,16 @@ class CreateMesuresTable extends Migration
      */
     public function up()
     {
-        Schema::create('mesures', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('date');
-            $table->integer('nombre');
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('mesures'))
+        {
+
+            Schema::create('dashboard.mesures', function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('date');
+                $table->integer('nombre');
+                $table->timestamps();
+            });
+        }
     }
 
     /**
@@ -28,6 +32,6 @@ class CreateMesuresTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mesures');
+        Schema::dropIfExists('dashboard.mesures');
     }
 }

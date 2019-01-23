@@ -13,11 +13,15 @@ class CreatePayloadsTable extends Migration
      */
     public function up()
     {
-        Schema::create('payloads', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('nombre_payloads');
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('payloads')){
+
+            Schema::create('dashboard.payloads', function (Blueprint $table) {
+                $table->increments('id');
+                $table->integer('nombre_payloads');
+                $table->timestamps();
+            });
+        }
+        
     }
 
     /**
@@ -27,6 +31,6 @@ class CreatePayloadsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('payloads');
+        Schema::dropIfExists('dashboard.payloads');
     }
 }

@@ -13,12 +13,15 @@ class CreateDevicesTable extends Migration
      */
     public function up()
     {
-        Schema::create('devices', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('date_device');
-            $table->integer('nombre_device');
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('devices'))
+        {
+            Schema::create('dashboard.devices', function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('date_device');
+                $table->integer('nombre_device');
+                $table->timestamps();
+            });
+        }
     }
 
     /**
@@ -28,6 +31,6 @@ class CreateDevicesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('devices');
+        Schema::dropIfExists('dashboard.devices');
     }
 }

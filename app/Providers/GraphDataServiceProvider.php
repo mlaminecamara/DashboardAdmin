@@ -17,13 +17,9 @@ class GraphDataServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $payloads = DB::table('payloads')
-                                    ->orderBy('created_at', 'desc')
-                                    ->limit(1)
-                                    ->get();
-            $total_payloads = json_decode($payloads, true);
-
-        View::share('total_payloads', $total_payloads);
+        view()->composer(
+            'index','App\Http\ViewComposers\PayloadComposer'
+        );
 
     }
 

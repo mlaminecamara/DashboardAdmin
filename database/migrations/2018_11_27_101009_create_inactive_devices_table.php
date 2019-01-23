@@ -13,12 +13,15 @@ class CreateInactiveDevicesTable extends Migration
      */
     public function up()
     {
-        Schema::create('inactive_devices', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('date_inactive');
-            $table->integer('nombre_inactive');
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('inactive_devices'))
+        {
+            Schema::create('dashboard.inactive_devices', function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('date_inactive');
+                $table->integer('nombre_inactive');
+                $table->timestamps();
+            });
+        }
     }
 
     /**
@@ -28,6 +31,6 @@ class CreateInactiveDevicesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('inactive_devices');
+        Schema::dropIfExists('dashboard.inactive_devices');
     }
 }

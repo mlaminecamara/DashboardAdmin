@@ -13,12 +13,15 @@ class CreateClientsTable extends Migration
      */
     public function up()
     {
-        Schema::create('clients', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('date_client');
-            $table->integer('nombre_client');
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('clients'))
+        {
+            Schema::create('dashboard.clients', function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('date_client');
+                $table->integer('nombre_client');
+                $table->timestamps();
+            });
+        }
     }
 
     /**
@@ -28,6 +31,6 @@ class CreateClientsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('clients');
+        Schema::dropIfExists('dashboard.clients');
     }
 }
