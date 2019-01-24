@@ -11,13 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-
-Route::get('/home', 'HomeController@count');
-
+Route::get('/', 'HomeController@count');
 
 Route::get('/capteurs-inactifs', 'capteursInactifsController@detail');
 
